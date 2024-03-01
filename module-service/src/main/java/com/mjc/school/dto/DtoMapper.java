@@ -1,6 +1,6 @@
 package com.mjc.school.dto;
 
-import com.mjc.school.model.News;
+import com.mjc.school.repository.model.News;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;

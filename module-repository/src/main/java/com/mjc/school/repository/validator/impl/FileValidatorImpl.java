@@ -1,6 +1,6 @@
-package com.mjc.school.validator.impl;
+package com.mjc.school.repository.validator.impl;
 
-import com.mjc.school.validator.FileValidator;
+import com.mjc.school.repository.validator.FileValidator;
 
 import java.io.File;
 

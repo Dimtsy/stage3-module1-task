@@ -1,8 +1,8 @@
-package com.mjc.school.impl;
+package com.mjc.school.repository.impl;
 
 import com.mjc.school.dto.NewsDto;
 import com.mjc.school.dto.DtoMapper;
-import com.mjc.school.exeption.InfoException;
+import com.mjc.school.repository.exeption.InfoException;
 
 import java.util.List;
 

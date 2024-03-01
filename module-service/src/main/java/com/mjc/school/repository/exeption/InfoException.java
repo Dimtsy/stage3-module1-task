@@ -1,4 +1,4 @@
-package com.mjc.school.exeption;
+package com.mjc.school.repository.exeption;
 
 public class InfoException extends Exception{
 

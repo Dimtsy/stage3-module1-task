@@ -1,5 +1,5 @@
-package com.mjc.school.impl;
-import com.mjc.school.model.News;
+package com.mjc.school.repository.impl;
+import com.mjc.school.repository.model.News;
 
 import java.time.LocalDateTime;
 import java.util.List;

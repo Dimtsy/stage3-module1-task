@@ -1,8 +1,8 @@
 package com.mjc.school;
 
 import com.mjc.school.dto.NewsDto;
-import com.mjc.school.impl.NewsServiceImpl;
-import com.mjc.school.exeption.InfoException;
+import com.mjc.school.repository.impl.NewsServiceImpl;
+import com.mjc.school.repository.exeption.InfoException;
 
 import java.util.Scanner;
 

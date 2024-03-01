@@ -1,9 +1,9 @@
-package com.mjc.school.impl;
+package com.mjc.school.repository.impl;
 
-import com.mjc.school.exeption.HandlingException;
-import com.mjc.school.model.Author;
-import com.mjc.school.model.News;
-import com.mjc.school.reader.impl.DataReaderImpl;
+import com.mjc.school.repository.exeption.HandlingException;
+import com.mjc.school.repository.model.Author;
+import com.mjc.school.repository.model.News;
+import com.mjc.school.repository.reader.impl.DataReaderImpl;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

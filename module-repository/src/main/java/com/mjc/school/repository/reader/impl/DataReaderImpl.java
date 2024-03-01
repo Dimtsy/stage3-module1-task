@@ -1,8 +1,8 @@
-package com.mjc.school.reader.impl;
+package com.mjc.school.repository.reader.impl;
 
-import com.mjc.school.exeption.HandlingException;
-import com.mjc.school.reader.DataReader;
-import com.mjc.school.validator.impl.FileValidatorImpl;
+import com.mjc.school.repository.exeption.HandlingException;
+import com.mjc.school.repository.reader.DataReader;
+import com.mjc.school.repository.validator.impl.FileValidatorImpl;
 
 import java.io.IOException;
 import java.nio.file.Files;

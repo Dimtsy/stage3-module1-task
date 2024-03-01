@@ -1,4 +1,4 @@
-package com.mjc.school.model;
+package com.mjc.school.repository.model;
 
 public class Author {
     private Long id;
