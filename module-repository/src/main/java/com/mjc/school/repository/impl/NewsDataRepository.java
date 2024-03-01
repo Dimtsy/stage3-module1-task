@@ -1,15 +1,15 @@
 package com.mjc.school.repository.impl;
-import com.mjc.school.repository.model.News;
+import com.mjc.school.repository.model.ModelNews;
 
 import java.time.LocalDateTime;
 import java.util.List;
 public class NewsDataRepository {
-      private final NewsData newsRepository = NewsData.getNewsData() ;
+      private final DataSourceNews newsRepository = DataSourceNews.getNewsData() ;
 
     public NewsDataRepository()  {
     }
 
-    public List<News> readAll() {
+    public List<ModelNews> readByAll() {
         return newsRepository.getNewsListAll();
     }
 
@@ -21,10 +21,10 @@ public class NewsDataRepository {
         return id > newsRepository.getAuthorAll().size() || id < 0;
     }
 
-    public News readId(Long id) {
+    public ModelNews readById(Long id) {
         return newsRepository.getNewsListAll().get(id.intValue());
     }
-    public News updateNewsId(News news) {
+    public ModelNews updateNewsId(ModelNews news) {
         news.setLastUpdatedDate(newsRepository.getDates());
         LocalDateTime localDateTime = newsRepository.getNewsListAll().get((int) news.getId()-1).getCreatedDate();
         news.setCreatedDate(localDateTime);
@@ -32,7 +32,7 @@ public class NewsDataRepository {
         return news;
     }
 
-    public News createNews(News news) {
+    public ModelNews createNews(ModelNews news) {
         news.setId((long) newsRepository.getNewsListAll().size() + 1);
         news.setCreatedDate(newsRepository.getDates());
         news.setLastUpdatedDate(newsRepository.getDates());

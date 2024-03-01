@@ -1,6 +1,6 @@
 package com.mjc.school.dto;
 
-import com.mjc.school.repository.model.News;
+import com.mjc.school.repository.model.ModelNews;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
@@ -12,19 +12,19 @@ public class DtoMapper {
     public DtoMapper() {
     }
 
-    public News dtoNews(NewsDto dto) {
-        return new News(dto.getId(), dto.getTitle(), dto.getContent(), dto.getCreatedDate(),
+    public ModelNews dtoNews(NewsDto dto) {
+        return new ModelNews(dto.getId(), dto.getTitle(), dto.getContent(), dto.getCreatedDate(),
                 dto.getLastUpdatedDate(), dto.getAuthorId()
         );
     }
 
-    public NewsDto newsDTO(News model){
+    public NewsDto newsDTO(ModelNews model){
         return modelMapper.map(model, NewsDto.class);
     }
 
-    public List<NewsDto> newsDTOList(List<News> newsList){
+    public List<NewsDto> newsDTOList(List<ModelNews> newsList){
         List<NewsDto> allDTO = new ArrayList<>();
-        for (News news : newsList) allDTO.add(newsDTO(news));
+        for (ModelNews news : newsList) allDTO.add(newsDTO(news));
         return allDTO;
     }
 

@@ -12,12 +12,12 @@ public class NewsServiceImpl {
 
 
     public List<NewsDto> allNews() {
-        return dtoMapper.newsDTOList(newsDataSourceRepository.readAll());
+        return dtoMapper.newsDTOList(newsDataSourceRepository.readByAll());
     }
 
     public NewsDto newsBId(long id) throws InfoException {
         if (newsDataSourceRepository.existNews(id)) throw new InfoException("ERROR_CODE:XXX13 ERROR_MESSAGE:News with id "+ (id+1) +" does not exist.");
-        return dtoMapper.newsDTO(newsDataSourceRepository.readId(id));
+        return dtoMapper.newsDTO(newsDataSourceRepository.readById(id));
     }
 
     public NewsDto createNews(NewsDto dto) throws InfoException {

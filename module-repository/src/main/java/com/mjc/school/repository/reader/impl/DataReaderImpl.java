@@ -1,6 +1,6 @@
 package com.mjc.school.repository.reader.impl;
 
-import com.mjc.school.repository.exeption.HandlingException;
+import com.mjc.school.repository.exeption.ReadException;
 import com.mjc.school.repository.reader.DataReader;
 import com.mjc.school.repository.validator.impl.FileValidatorImpl;
 
@@ -16,10 +16,10 @@ import java.util.stream.Stream;
 public class DataReaderImpl implements DataReader {
 
     @Override
-    public List<String> readFile(String path) throws HandlingException {
+    public List<String> readFile(String path) throws ReadException {
         FileValidatorImpl fileValidate = new FileValidatorImpl();
         if (!fileValidate.validateFilePath(path)) {
-            throw new HandlingException("File is not exist or is empty or incorrect path");
+            throw new ReadException("File is not exist or is empty or incorrect path");
         }
         List<String> lines;
         Path pathFile = Paths.get(path);
@@ -27,7 +27,7 @@ public class DataReaderImpl implements DataReader {
             lines = lineStream.collect(Collectors.toCollection(ArrayList::new));
 
         } catch (IOException e) {
-            throw new HandlingException("Reading file is fail ", e);
+            throw new ReadException("Reading file is fail ", e);
         }
 
         return lines;

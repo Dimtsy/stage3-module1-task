@@ -1,8 +1,8 @@
 package com.mjc.school.repository.impl;
 
-import com.mjc.school.repository.exeption.HandlingException;
-import com.mjc.school.repository.model.Author;
-import com.mjc.school.repository.model.News;
+import com.mjc.school.repository.exeption.ReadException;
+import com.mjc.school.repository.model.ModelAuthor;
+import com.mjc.school.repository.model.ModelNews;
 import com.mjc.school.repository.reader.impl.DataReaderImpl;
 
 import java.sql.Timestamp;
@@ -14,10 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class NewsData {
+public class DataSourceNews {
     private final DataReaderImpl dataReader = new DataReaderImpl();
-    private final ArrayList<News> newsArrayList;
-    private static NewsData newsData;
+    private final ArrayList<ModelNews> newsArrayList;
+    private static DataSourceNews newsData;
     private static final int NUMBER_NEWS = 20;
     private final String FILE_NEWS = "module-repository/src/main/resources/news.txt";
     private final String FILE_CONTENT = "module-repository/src/main/resources/content.txt";
@@ -25,13 +25,13 @@ public class NewsData {
     private final String BEGIN_TIME = "2024-02-01 00:00:00";
     private final String END_TIME = "2024-03-31 00:58:00";
 
-    private NewsData() {
+    private DataSourceNews() {
         newsArrayList = readerNewsFromFile();
     }
 
-    public static NewsData getNewsData() {
+    public static DataSourceNews getNewsData() {
         if (newsData == null) {
-            newsData = new NewsData();
+            newsData = new DataSourceNews();
         }
         return newsData;
     }
@@ -56,34 +56,34 @@ public class NewsData {
         return LocalDateTime.parse(dateFormatZone().format(new Date()));
     }
 
-    public List<Author> getAuthorAll()  {
+    public List<ModelAuthor> getAuthorAll()  {
         List<String> bufferAuthor = null;
         try {
             bufferAuthor = dataReader.readFile(FILE_AUTHOR);
-        } catch (HandlingException e) {
+        } catch (ReadException e) {
             e.printStackTrace();
         }
-        List<Author> authors = new ArrayList<>();
+        List<ModelAuthor> authors = new ArrayList<>();
         for (int i = 0; i < bufferAuthor.size(); i++) {
-            authors.add(new Author((long) i + 1, bufferAuthor.get(i)));
+            authors.add(new ModelAuthor((long) i + 1, bufferAuthor.get(i)));
         }
         return authors;
     }
 
-    public List<News> getNewsListAll() {
+    public List<ModelNews> getNewsListAll() {
         return newsArrayList;
     }
 
-    private ArrayList<News> readerNewsFromFile() {
+    private ArrayList<ModelNews> readerNewsFromFile() {
         Random rand = new Random();
-        ArrayList<News> news = new ArrayList<>();
+        ArrayList<ModelNews> news = new ArrayList<>();
 
         List<String> bufferNews = null;
         List<String> bufferContent = null;
         try {
             bufferNews = dataReader.readFile(FILE_NEWS);
             bufferContent = dataReader.readFile(FILE_CONTENT);
-        } catch (HandlingException e) {
+        } catch (ReadException e) {
             e.printStackTrace();
         }
         for (int i = 1; i <= NUMBER_NEWS; i++) {
@@ -93,7 +93,7 @@ public class NewsData {
             Long idAuthor = (long) rand.nextInt(getAuthorAll().size()) + 1;
 
             LocalDateTime nowAsISO = getDatesRandom();
-            News news1 = new News(i, title, content, nowAsISO, nowAsISO, idAuthor);
+            ModelNews news1 = new ModelNews(i, title, content, nowAsISO, nowAsISO, idAuthor);
             news.add(news1);
         }
         return news;
