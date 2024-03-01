@@ -7,12 +7,12 @@ import com.mjc.school.repository.exeption.InfoException;
 import java.util.List;
 
 public class NewsServiceImpl {
-    private final NewsDataRepository newsDataSourceRepository = new NewsDataRepository();
+    private final DataSourceNews newsDataSourceRepository = new DataSourceNews();
     private final DtoMapper dtoMapper = new DtoMapper();
 
 
     public List<NewsDto> allNews() {
-        return dtoMapper.newsDTOList(newsDataSourceRepository.readByAll());
+        return dtoMapper.newsDTOList(newsDataSourceRepository.readAll());
     }
 
     public NewsDto newsBId(long id) throws InfoException {
