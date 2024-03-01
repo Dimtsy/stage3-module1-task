@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+group = 'com.mjc.school.main'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':module-repository')
+    implementation project(':module-service')
+    implementation project(':module-web')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
